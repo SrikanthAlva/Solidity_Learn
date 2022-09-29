@@ -25,4 +25,12 @@ contract TestMath {
     function testSquareRoot(uint x) public pure returns (uint) {
         return Math.sqrt(x);
     }
+
+    using Math for uint256;
+
+    uint256 squareNumber = 16;
+
+    function returnSqrt() public view returns(uint256){
+        return squareNumber.sqrt();
+    }
 }
