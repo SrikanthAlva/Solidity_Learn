@@ -35,6 +35,9 @@ contract BasicNFT is ERC721, Ownable {
     constructor() ERC721("Quiz Geeks", "QZG") {}
 
     function mintNFT() public payable {
+        // msg.sender - who is calling the function
+        // tx.origin - this will tell who is one calling the parent transaction full chain
+        require(msg.sender == tx.origin, "Contract Called not allowed");
         require( tokenCounter + 1 <= MAX_SUPPLY , "Max Supply Reached");
         require(msg.value >= mintFee, "Insufficient Price");
         if(onlyAllowList){
