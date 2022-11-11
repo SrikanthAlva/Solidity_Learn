@@ -23,7 +23,7 @@ contract Lottery {
 
     constructor(string memory name, uint _startTime, uint _endTime) {
         owner = msg.sender;
-        lotery = Lottery({Name: name, creator: msg.sender, startTime: _startTime, endTime: _endTime, tickerPrice: 0.1 ether});
+        lotery = Lottery({Name: name, creator: msg.sender, startTime: block.timestamp + _startTime, endTime: block.timestamp + _endTime, tickerPrice: 1 ether});
     }
 
     function buyTickets(uint quantity ) payable external {
